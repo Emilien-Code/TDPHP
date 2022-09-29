@@ -1,0 +1,4 @@
+allow_cheat:1
+max_try:10
+max_scores_stored:5
+nb_char_max:100
