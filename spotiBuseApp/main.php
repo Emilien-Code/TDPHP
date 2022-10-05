@@ -31,3 +31,27 @@
         echo 'Exception reçue : ',  $e->getMessage(), "\n";
 
     }
+
+
+
+/////////////////////////////////////////
+
+
+if(isset( $_SESSION["track"])){
+    echo $_SESSION["test"];
+    $unserialisedTrack = $_SESSION["track"];
+    var_dump($unserialisedTrack);
+    $renderer = new renderer\AlbumTrackRenderer($unserialisedTrack);
+    echo $renderer->render(0);
+
+
+}else{
+    echo "<p>création de cookies</p>";
+    $_SESSION['test'] = 'test';
+    $albumTrack = new tracks\AlbumTrack("titre", "./test/test.mp3", "artiste", "date");
+    $t = serialize($albumTrack);
+    $renderer = new renderer\AlbumTrackRenderer(unserialize($t));
+    echo $renderer->render(0);
+    $_SESSION['track'] = $albumTrack;
+
+}
